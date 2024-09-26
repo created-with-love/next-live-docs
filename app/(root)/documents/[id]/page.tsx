@@ -1,25 +1,14 @@
-import { Editor } from '@/components/editor/Editor';
-import Header from '@/components/Header';
+import CollaborativeRoom from '@/components/CollaborativeRoom';
 import React from 'react';
 
-import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { currentUser } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
 
-const Document = () => {
+const Document = async () => {
   return (
-    <div>
-      <Header>
-        <div className="flex w-fit items-center justify-center gap-2">
-          <p className="document-title">This is a fake document title</p>
-        </div>
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-      </Header>
-      <Editor />
-    </div>
+    <main className="flex w-full flex-col items-center">
+      <CollaborativeRoom />
+    </main>
   );
 };
 
