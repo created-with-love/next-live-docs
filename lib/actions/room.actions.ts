@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { nanoid } from 'nanoid';
 import { liveblocks } from '../liveblocks';
 import { revalidatePath } from 'next/cache';
@@ -79,5 +81,15 @@ export const getDocuments = async ({ email }: { email: string }) => {
     return parseStringify(rooms);
   } catch (error) {
     console.log(`Error happened while getting a rooms: ${error}`);
+  }
+};
+
+export const deleteDocument = async (roomId: string) => {
+  try {
+    await liveblocks.deleteRoom(roomId);
+    revalidatePath('/');
+    redirect('/');
+  } catch (error) {
+    console.log(`Error happened while deleting a room: ${error}`);
   }
 };
