@@ -18,8 +18,6 @@ const Document = async ({ params: { id } }: SearchParamProps) => {
 
   if (!room) redirect('/');
 
-  console.log('room', { room, clerkUser });
-
   const userIds = Object.keys(room.usersAccesses);
   const users = await getClerkUsers({ userIds });
 
