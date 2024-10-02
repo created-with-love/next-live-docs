@@ -28,7 +28,7 @@ export const createDocument = async ({
       defaultAccesses: [],
     });
 
-    // revalidatePath('/');
+    revalidatePath('/');
 
     return parseStringify(room);
   } catch (error) {
